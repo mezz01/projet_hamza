@@ -1,0 +1,128 @@
+// Vars
+$primaryBlue : #336aea;
+$purpleHover : #c983ff;
+$boxShadow: .25em .25em .75em rgba(0,0,0,.25);
+// Mixin
+
+// Style
+.SurveyFormContainer{
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    .SurveyFormTitle{
+        font-weight: 800;
+        text-align: center;
+        margin-block : 1em;
+        font-size: 3em;
+        background: linear-gradient(90deg, $primaryBlue, $purpleHover, $primaryBlue);   
+        text-transform: uppercase;
+        letter-spacing: .25em;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        animation: shine 10s linear infinite;
+        position: relative;
+    }
+    .FormContainer{
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        .SubmitBtn{
+            font-family: monospace;
+            background-color: #f3f7fe;
+            color: #3b82f6;
+            border: none;
+            border-radius: 8px;
+            width: 50%;
+            height: 2.5rem;
+            transition: .3s;
+            &:hover{
+                background-color: #3b82f6;
+                box-shadow: 0 0 0 5px #3b83f65f;
+                color: #fff;
+            }
+        }
+        .GenderWrapper{
+            display: flex;
+            gap: 4rem;
+            width:60%;
+            background:#fff ;
+            border-radius: 5px;
+            align-items: center;
+            padding:2rem;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+            .RadioGroup{
+                display: flex;
+                gap: 4rem;
+                .RadioInput{
+                    position: absolute;
+                    opacity: 0;
+                    &:checked + .RadioLabel{
+                        background-color: #f3f7fe;
+                        border-color: $primaryBlue;
+                    }
+                    &:focus + .RadioLabel{
+                        outline: 2px solid $primaryBlue;
+                    }
+                    &:checked + .RadioLabel .RadioInnerCircle{
+                        border-color: $primaryBlue;
+                    }
+                    &:checked + .RadioLabel .RadioInnerCircle{
+                        &::after{
+                            content: '';
+                            display: block;
+                            width: 0.5em;
+                            height: 0.5em;
+                            background-color: $primaryBlue;
+                            border-radius: 50%;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+                }
+                .RadioLabel{
+                    display: flex;
+                    align-items: center;
+                    padding: 0.5em;
+                    margin-bottom: 0.5em;
+                    background-color: #fff;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    transition: background-color 0.2s, border-color 0.2s;
+                    &:hover{
+                        background-color: #f3f7fe;
+                    }
+                    &:hover .RadioInnerCircle{
+                        border-color: #555;
+                    }
+                    .RadioInnerCircle{
+                        display: inline-block;
+                        width: 1em;
+                        height: 1em;
+                        border: 2px solid #888;
+                        border-radius: 50%;
+                        margin-right: 0.5em;
+                        transition: border-color 0.2s;
+                        position: relative;
+                    }
+                }
+            }
+        }
+    }
+}
+// animate
+@keyframes shine {
+    0% {
+        background-position-x: -300%;
+    }
+    100% {
+        background-position-x: 300%;
+    }
+}
